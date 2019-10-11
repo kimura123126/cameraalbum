@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (Build.VERSION.SDK_INT >= 24){
+                    //第二个参数可以是任意的字符串
                     imageUri = FileProvider.getUriForFile(MainActivity.this,
                            "com.example.dell1.cameraalbumtest.fileprovider",outputImage);
                 }else{
@@ -149,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
                 descs.clear();
                 fileNames.clear();
                 // 通过ContentResolver查询所有图片信息
-                Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
+                Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        null, null, null, null);
                 while (cursor.moveToNext())
                 {
                     // 获取图片的显示名
@@ -275,15 +277,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+    //解析URi
     @TargetApi(19)
     private void handleImageOnKitKat(Intent data){
         String imagePath =null;
         Uri uri = data.getData();
+        //是document类型的话
         if (DocumentsContract.isDocumentUri(this,uri)){
             String docId = DocumentsContract.getDocumentId(uri);
+            //Uri的authority是media格式的话，document id进一步解析
             if("com.android.providers.media.documents".equals(uri.getAuthority())){
+                //取出id
                 String id= docId.split(":")[1];
                 String selection = MediaStore.Images.Media._ID + "=" +id;
+                //构建新的Uri和条件语句
                 imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,selection);
             }else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())){
                 Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"),
