@@ -4,46 +4,41 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/add" />
 
-        <Button
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/view" />
-    </LinearLayout>
+
+
+
 
     <Button
-        android:id="@+id/take_photo"
+        android:id="@+id/takePhotoBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take Photo"/>
+        android:text="拍照 照片存放在SD卡的应用关联缓存目录下"/>
     <Button
-        android:id="@+id/choose_from_album"
+        android:id="@+id/takePhotoBtn2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="拍照 照片存放在SD卡的其他目录下"/>
+    <Button
+        android:id="@+id/fromAlbumBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Choose From Album"/>
+    <Button
+        android:id="@+id/noteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="本项目note"/>
 
-    <android.support.v7.widget.RecyclerView
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/show"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp" />-->
 
 
     <ImageView
-        android:id="@+id/picture"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"/>
